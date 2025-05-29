@@ -3,18 +3,10 @@ var app = builder.Build();
 
 app.Run(async (HttpContext context) =>
 {
-    if (1 == 1)
-    {
-        context.Response.StatusCode = 302;
-    }
-    else
-    {
-        context.Response.StatusCode = 500;
-    }
-
-    await context.Response.WriteAsync("Hello World");
-
-
+    context.Response.Headers["Server"] = "My Server";
+    context.Response.Headers["Mykey"] = "My value";
+    context.Response.Headers["Content-Type"] = "text/html";
+    await context.Response.WriteAsync("<h1> Hello World </h1>");
 });
 
 app.Run();
