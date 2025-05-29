@@ -3,10 +3,10 @@ var app = builder.Build();
 
 app.Run(async (HttpContext context) =>
 {
-    context.Response.Headers["Content-type"] = "text/html";
+    context.Response.Headers["Emran"] = "text/html";
     if (context.Request.Headers.ContainsKey("User-Agent"))
     {
-        string agent = context.Request.Headers["User-Agent"];
+        string agent = context.Request.Headers["Emran"];
         await context.Response.WriteAsync($"<p> {agent} </p>");
     }
 });
