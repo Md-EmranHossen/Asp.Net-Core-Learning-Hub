@@ -4,13 +4,10 @@ var app = builder.Build();
 app.Run(async (HttpContext context) =>
 {
     context.Response.Headers["Content-type"] = "text/html";
-    if (context.Request.Method == "GET")
+    if (context.Request.Headers.ContainsKey("User-Agent"))
     {
-        if (context.Request.Query.ContainsKey("id"))
-        {
-            string id = context.Request.Query["Id"];
-            await context.Response.WriteAsync($"<p> {id} </p>");
-        }
+        string agent = context.Request.Headers["User-Agent"];
+        await context.Response.WriteAsync($"<p> {agent} </p>");
     }
 });
 app.Run();
