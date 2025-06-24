@@ -8,9 +8,9 @@ using Microsoft.EntityFrameworkCore;
 using CitiesManager.API.Data;
 using CitiesManager.API.Models;
 
-namespace CitiesManager.API.Controllers
+namespace CitiesManager.API.Controllers.v1
 {
-    
+    [ApiVersion("1.0")]
     public class CitiesController : CustomControllerBase
     {
         private readonly ApplicationDbContext _context;
@@ -21,7 +21,13 @@ namespace CitiesManager.API.Controllers
         }
 
         // GET: api/Cities
+        /// <summary>
+        /// To get get list of cities (including city ID and city name) form
+        ///  'cities' table
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
+        [Produces("application/xml")]
         public async Task<ActionResult<IEnumerable<City>>> GetCities()
         {
             if(_context.Cities == null)
