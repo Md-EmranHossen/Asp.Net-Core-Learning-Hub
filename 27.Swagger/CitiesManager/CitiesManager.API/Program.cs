@@ -11,9 +11,14 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlSer
     ));
 
 //Swagger
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 
 var app = builder.Build();
+
+app.UseSwagger(); // Create endpoing for
+app.UseSwaggerUI();
 
 // Configure the HTTP request pipeline.
 
