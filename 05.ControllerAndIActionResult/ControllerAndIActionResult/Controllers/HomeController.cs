@@ -1,26 +1,27 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
+
 namespace ControllerAndIActionResult.Controllers
 {
    public class HomeController : Controller
     {
         [Route("home")]
         [Route("/")]
-        public string Index()
+        public ContentResult Index()
         {
-            return "Hello From Home";
+            /*
+             return new ContentResult()
+              {
+                  Content = "Hello From Index",
+                  ContentType = "text/plain"
+              };
+             */
+
+            //  return Content("Hello from Index", "text/plain");
+
+            return Content("<h1> Welcome </h1> <h2>Hello from Index</h2>","text/html");
         }
 
-        [Route("about")]
-        public string About()
-        {
-            return "Hello From About";   
-        }
 
-        [Route("contact-us/{mobile:ragex(^\\d{{10}}$)}")]
-        public string Contact()
-        {
-            return "Hello From Contact";
-        }
     }
 }
