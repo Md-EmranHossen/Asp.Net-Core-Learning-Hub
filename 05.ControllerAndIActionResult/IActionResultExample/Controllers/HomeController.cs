@@ -40,7 +40,7 @@ namespace IActionResultExample.Controllers
                 return StatusCode(401);
             }
 
-            return File("/FirstMonth.pdf","application/pdf");
+            return RedirectToAction("Books","Store", new {});
         }
     }
 }
